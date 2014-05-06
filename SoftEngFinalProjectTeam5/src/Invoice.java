@@ -1,4 +1,4 @@
-import java.util.Date;
+
 /**
  * This Class holds the Invoice DataTypes. 
  * @author Kahliik Burrell
@@ -7,19 +7,22 @@ import java.util.Date;
  *
  */
 
-public class Invoice {
+public class Invoice 
+{
 
-	int invoiceNum, quantity;
-	Date DateOfOrder, paidDate;
-	double price;
-	String companyCode, status;
+	private int invoiceNum, quantity;
+	private String DateOfOrder, paidDate;
+	private double price;
+	private String companyCode, status, CustomerInfo;
 
 	/**
 	* 	This method is the Invoice object default constructor
 	*	it instantiates the instance variables for an Invoice Object
 	* 	and sets them to their default values
 	*/
-	public Invoice(){
+	public Invoice()
+	{
+		
 	} 
 
 	/**
@@ -36,13 +39,57 @@ public class Invoice {
 	*	It allows for the creation of a user-created invoices
 	*/
 
-	public Invoice(int oNum, Date oDate, double total, int quantity, Date pDate,  String cCode, String stat)
+	public Invoice(int oNum, String oDate, double total, int quantity, String pDate,  String cCode, String stat, String custInfo)
 	{
-	setInvoiceNum(oNum);
+		setInvoiceNum(oNum);
+		setPrice(total);
+		setCompanyCode(cCode);
+		setStatus(stat);
+		setCustomerInfo(custInfo);
+		setDateOfOrder(oDate);
+		setPaidDate(pDate);
+		setQuantity(quantity);
+	}
 	
-	setPrice(total);
-	setCompanyCode(cCode);
-	setStatus(stat);
+	public void setCustomerInfo(String custInfo)
+	{
+		CustomerInfo = "\t"+custInfo;
+	}
+	
+	public void setDateOfOrder(String oDate)
+	{
+		DateOfOrder = oDate;
+	}
+	
+	public void setPaidDate(String pDate)
+	{
+		paidDate = pDate;
+		
+	}
+	
+	public void setQuantity(int newQuantity)
+	{
+		quantity = newQuantity;
+	}
+	
+	public String getCustomerInfo()
+	{
+		return CustomerInfo;
+	}
+	
+	public String getDateOfOrder()
+	{
+		return DateOfOrder;
+	}
+	
+	public String getPaidDate()
+	{
+		return paidDate;
+	}
+	
+	public int getQuantity()
+	{
+		return quantity;
 	}
 
 	/**
@@ -51,8 +98,9 @@ public class Invoice {
 	* @param oNum set the order number to the invoice number
 	* 
 	*/
-	public void setInvoiceNum(int oNum){
-	invoiceNum = oNum;
+	public void setInvoiceNum(int oNum)
+	{
+		invoiceNum = oNum;
 	}
 
 	
@@ -63,8 +111,9 @@ public class Invoice {
 	* @param total
 	* 
 	*/
-	public void setPrice(double total){
-	price = total;
+	public void setPrice(double total)
+	{
+		price = total;
 	}
 
 	/**
@@ -73,8 +122,9 @@ public class Invoice {
 	* @param cCode
 	* 
 	*/
-	public void setCompanyCode(String cCode){
-	companyCode = cCode;
+	public void setCompanyCode(String cCode)
+	{
+		companyCode = cCode;
 	}
 
 
@@ -85,8 +135,9 @@ public class Invoice {
 	* @param stat
 	* 
 	*/
-	public void setStatus(String stat){
-	status = stat;
+	public void setStatus(String stat)
+	{
+		status = stat;
 	}
 
 
@@ -95,8 +146,9 @@ public class Invoice {
 	*
 	* @return the invoice number assigned to an invoice
 	*/
-	public int getInvoiceNum(){
-	return invoiceNum;
+	public int getInvoiceNum()
+	{
+		return invoiceNum;
 	}
 
 
@@ -105,8 +157,9 @@ public class Invoice {
 	*
 	* @return the total price of an order for a given invoice
 	*/
-	public double getPrice(){
-	return price;
+	public double getPrice()
+	{
+		return price;
 	}
 
 
@@ -115,8 +168,9 @@ public class Invoice {
 	*
 	* @return the company code used to pay for the order
 	*/
-	public String getCompanyCode(){
-	return companyCode;
+	public String getCompanyCode()
+	{
+		return companyCode;
 	}
 
 
@@ -125,8 +179,21 @@ public class Invoice {
 	*
 	* @return the current status of an invoice
 	*/
-	public String getStatus(){
-	return status;
+	public String getStatus()
+	{
+		return status;
+	}
+	
+	public String toString()
+	{
+		return 	"\n Invoice Number: " + getInvoiceNum() 
+				+ "\n Date Of Order: " + getDateOfOrder()
+				+ "\n Price: " + getPrice()
+				+ "\n\n Customer Info: \n" + getCustomerInfo() 
+				+ "\n\n Quantity: " + getQuantity()
+				+ "\n Paid Date: " + getPaidDate()
+				+ "\n Paid Status: " + getStatus()
+				+ "\n Company Code: " + getCompanyCode();
 	}
 
 
