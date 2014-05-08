@@ -48,16 +48,17 @@ public class InvoiceJDBC {
 		}
 	}
 	
-	public static int createInvoiceFromOrderList(String newSQL)
+	public static int createInvoiceFromOrderList(String newSQL, String newDate)
 	{
-		Calendar cal = Calendar.getInstance();
+		/*Calendar cal = Calendar.getInstance();
 		cal.add(Calendar.DATE, -1);
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		String fDate = dateFormat.format(cal.getTime());
+		String fDate = dateFormat.format(cal.getTime());*/
+	
 		try 
 		{
 			PreparedStatement s = conn.prepareStatement(newSQL);
-			s.setString(1, fDate);
+			s.setString(1, newDate);
 			int rs = s.executeUpdate();
 			return rs;
 		} 

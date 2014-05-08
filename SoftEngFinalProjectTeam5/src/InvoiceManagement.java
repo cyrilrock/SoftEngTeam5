@@ -20,7 +20,7 @@ public class InvoiceManagement {
 		InvoiceJDBC.getConnection();
 	}
 	
-	public int createInvoices()
+	public int createInvoices(String newDate)
 	{
 		
 		
@@ -33,7 +33,7 @@ public class InvoiceManagement {
 					+	" AND NOT EXISTS" 
 					+ 	" (SELECT InvoiceNum FROM InvoiceTable WHERE InvoiceNum = OrderID)";
 		
-		int rows =InvoiceJDBC.createInvoiceFromOrderList(createSQL);
+		int rows =InvoiceJDBC.createInvoiceFromOrderList(createSQL, newDate);
 		return rows;
 	}
 	
